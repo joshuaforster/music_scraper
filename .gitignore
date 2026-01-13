@@ -1,9 +1,22 @@
-# Node
-node_modules/
-.env
-
-# Python
+# Python virtual env
 venv/
+.venv/
+
+# Environment variables
+.env
+.env.*
+*.env
+
+# Python junk
 __pycache__/
 *.pyc
-.env
+.pytest_cache/
+
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# Playwright
+.playwright/

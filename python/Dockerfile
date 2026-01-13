@@ -2,9 +2,11 @@ FROM mcr.microsoft.com/playwright/python:v1.49.1-jammy
 
 WORKDIR /app
 
-COPY python/requirements.txt ./requirements.txt
+COPY requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY python/ .
+RUN playwright install --with-deps chromium
 
-CMD ["python", "parse_nac.py"]
+COPY . .
+
+CMD ["python3", "parse_nac.py"]

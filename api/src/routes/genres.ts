@@ -121,7 +121,7 @@ if (totalEvents === 0) {
   return res.json({ success: true, message: "No new events to email" })
 }
   await transporter.sendMail({
-    to: ["joshuaforster95@gmail.com", "holly.hipwell@hotmail.com"],   
+    to: ["joshuaforster95@gmail.com", "holly.hipwell@hotmail.com", "joshdevelops@icloud.com"],   
     subject: "This week’s Norwich live music",
     html: htmlBody
   })

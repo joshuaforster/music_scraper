@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 import { getEventsByGenre } from "../utils/events.js";
-import { transporter } from "../emails/transporter.js";
+import { resend } from "../emails/transporter.js";
 import { pool } from "../db/pool.js";
 
 export const router = Router();
@@ -120,11 +120,16 @@ const totalEvents = emailSections.reduce(
 if (totalEvents === 0) {
   return res.json({ success: true, message: "No new events to email" })
 }
-  await transporter.sendMail({
-    to: ["joshuaforster95@gmail.com", "holly.hipwell@hotmail.com", "joshdevelops@icloud.com"],   
-    subject: "This week’s Norwich live music",
-    html: htmlBody
-  })
+  await resend.emails.send({
+  from: "Josh <onboarding@resend.dev>",
+  to: [
+    "joshuaforster95@gmail.com",
+    "holly.hipwell@hotmail.com",
+    "joshdevelops@icloud.com"
+  ],
+  subject: "This week’s Norwich live music",
+  html: htmlBody
+});
 
   for (const section of emailSections) {
   for (const event of section.events) {

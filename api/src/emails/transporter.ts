@@ -1,11 +1,3 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
-console.log("EMAILPASS exists:", Boolean(process.env.EMAILPASS))
-
-export const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "joshuaforster95@gmail.com",
-    pass: process.env.EMAILPASS
-  }
-});
+export const resend = new Resend(process.env.RESEND_API_KEY);

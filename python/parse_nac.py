@@ -21,7 +21,11 @@ for v in venues:
 page = 1
 
 with sync_playwright() as p:
-    browser = p.chromium.launch(headless=True)
+    browser = p.chromium.launch(
+    headless=True,
+    args=["--no-sandbox", "--disable-dev-shm-usage"]
+)
+
     page_browser = browser.new_page()
 
     while True:

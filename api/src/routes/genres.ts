@@ -121,7 +121,7 @@ if (totalEvents === 0) {
   return res.json({ success: true, message: "No new events to email" })
 }
   await resend.emails.send({
-  from: "Joshua Forster <hello@hounddata.com",
+  from: "Joshua Forster <hello@hounddata.com>",
   to: [
     "joshuaforster95@gmail.com",
     "holly.hipwell@hotmail.com",

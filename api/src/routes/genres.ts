@@ -10,16 +10,17 @@ async function getMusicByGenre(genre: string) {
 }
 
 
-
 router.get("/events", async (req, res) => {
 
 const worldMusic = await getMusicByGenre("World")
 
 const jazzMusic = await getMusicByGenre("Jazz")
 
-const sentRows = await pool.query("SELECT booking_url FROM emailed_events")
-const alreadySent = new Set(sentRows.rows.map(r => r.booking_url))
+const sentRowsObeject = await pool.query("SELECT booking_url FROM emailed_events")
 
+const sentRows = sentRowsObeject.rows
+
+const alreadySent = new Set(sentRows.map(r => r.booking_url))
 
 const seen = new Set<string>()
 
@@ -112,16 +113,15 @@ const htmlBody = `
   </div>
 </div>
 `
-const totalEvents = emailSections.reduce(
-  (sum, section) => sum + section.events.length,
-  0
+const totalEvents = emailSections.reduce((sum, section) => 
+  sum + section.events.length, 0
 )
 
 if (totalEvents === 0) {
   return res.json({ success: true, message: "No new events to email" })
 }
   await resend.emails.send({
-  from: "Josh <onboarding@resend.dev>",
+  from: "Joshua Forster <hello@hounddata.com",
   to: [
     "joshuaforster95@gmail.com",
     "holly.hipwell@hotmail.com",

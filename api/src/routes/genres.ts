@@ -16,6 +16,8 @@ const worldMusic = await getMusicByGenre("World")
 
 const jazzMusic = await getMusicByGenre("Jazz")
 
+const reggaeMusic = await getMusicByGenre("Reggae")
+
 const sentRowsObeject = await pool.query("SELECT booking_url FROM emailed_events")
 
 const sentRows = sentRowsObeject.rows
@@ -32,8 +34,13 @@ const sections = [
   {
     title: "World",
     events: worldMusic,
+  },
+  {
+    title: "Reggae",
+    events: reggaeMusic,
   }
 ]
+
 
 const emailSections = sections.map(section => {
   const uniqueEvents: any[] = []

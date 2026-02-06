@@ -8,3 +8,4 @@ print("status:", r.status_code)
 print("body:", r.text)
 r.raise_for_status()
 
+# run_events.py manually triggers the email API without scraping.

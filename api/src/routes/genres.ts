@@ -59,7 +59,7 @@ const emailSections = sections.map(section => {
         title: event.title,
         date: event.event_datetime,
         genre: event.genre,
-        venue: "Norwich Arts Centre",
+        venue: event.venue_name,
         price: event.price_text || `${event.min_price}–${event.max_price}`,
         booking_url: event.booking_url
     }))
@@ -84,7 +84,7 @@ const htmlBody = `
     </h1>
 
     <p style="color:#555; line-height:1.5;">
-      I've put this together by automatically checking the Norwich Arts Centre listings and grouping the best upcoming gigs by genre, so you don't have to.
+      I've put this together by automatically checking multiple Norwich live music venues and grouping the best upcoming gigs by genre, so you don't have to.
     </p>
 
     ${emailSections.map(section => {

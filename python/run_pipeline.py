@@ -4,6 +4,7 @@ import os
 
 print("Running scraper...")
 subprocess.check_call(["python", "parse_nac.py"])
+subprocess.check_call(["python", "parse_uea.py"])
 
 print("Triggering email send...")
 EVENTS_URL = os.environ["EVENTS_URL"]
